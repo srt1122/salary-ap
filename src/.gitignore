@@ -1,4 +1,5 @@
-/drivers-data
-/kinmuzikan
-/salary-data
-/zisseki_csv
+drivers-data/
+kinmuzikan/
+salary-data/
+zisseki_csv/
+__pycache__
