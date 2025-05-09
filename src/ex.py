@@ -9,11 +9,11 @@ import math
 
 def convert_excel(csv_year, folder_year):
 
-    zisseki_path = f'C:/CSVファイル/配車実績ＣＳＶ({csv_year})-({csv_year}).CSV'
-    #zisseki_path = f'zisseki_csv/配車実績ＣＳＶ({csv_year})-({csv_year}).CSV'
+    #zisseki_path = f'C:/CSVファイル/配車実績ＣＳＶ({csv_year})-({csv_year}).CSV'
+    zisseki_path = f'zisseki_csv/配車実績ＣＳＶ({csv_year})-({csv_year}).CSV'
     #file_path_zip = "C:/Users/Mieyuso001/Downloads/労働時間管理表.zip"
-    file_path_zip = "C:/Users/Mieyuso005/Downloads/労働時間管理表.zip"
-    #file_path_zip = f'kinmuzikan/{folder_year}/労働時間管理表.zip'
+    #file_path_zip = "C:/Users/Mieyuso005/Downloads/労働時間管理表.zip"
+    file_path_zip = f'kinmuzikan/{folder_year}/労働時間管理表.zip'
     try:
         with zipfile.ZipFile(file_path_zip) as zip_f:
             for info in zip_f.infolist():

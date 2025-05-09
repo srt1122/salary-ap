@@ -74,6 +74,7 @@ for driver in ti_dict:
                     if key == k:
                         sh.cell(row, col).value = sa_dict[k][0]
             sh.cell(row, 33).value = ti_dict[driver][0]
+            sh.cell(row, 33).number_format = 'hhh:mm'
             zan_zikan = convert_zikan(ti_dict[driver][1])
             if ti_dict[driver][2] == "0:00":
                 pass
@@ -84,6 +85,7 @@ for driver in ti_dict:
                 # zan_zikan = zan_zikan - kyuzitu
             if zan_zikan <= 60:
                 sh.cell(row, 34).value = ti_dict[driver][1]
+                sh.cell(row, 34).number_format = 'hhh:mm'
             else:
                 c_zikan = zan_zikan-60
                 c_HM = return_HM(c_zikan)
@@ -96,3 +98,4 @@ for driver in ti_dict:
 
 wb.save(f"{folder_year}月末締 賃金計算連絡書 .xlsx")
 
+cl.create_ok_message()
