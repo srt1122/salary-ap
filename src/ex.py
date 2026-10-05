@@ -9,11 +9,11 @@ import math
 
 def convert_excel(csv_year, folder_year):
 
-    #zisseki_path = f'C:/CSVファイル/配車実績ＣＳＶ({csv_year})-({csv_year}).CSV'
-    zisseki_path = f'zisseki_csv/配車実績ＣＳＶ({csv_year})-({csv_year}).CSV'
-    #file_path_zip = "C:/Users/Mieyuso001/Downloads/労働時間管理表.zip"
+    zisseki_path = f'C:/CSVファイル/配車実績ＣＳＶ({csv_year})-({csv_year}).CSV'
+    #zisseki_path = f'zisseki_csv/配車実績ＣＳＶ({csv_year})-({csv_year}).CSV'
+    file_path_zip = "C:/Users/Mieyuso001/Downloads/労働時間管理表.zip"
     #file_path_zip = "C:/Users/Mieyuso005/Downloads/労働時間管理表.zip"
-    file_path_zip = f'kinmuzikan/{folder_year}/労働時間管理表.zip'
+    #file_path_zip = f'kinmuzikan/{folder_year}/労働時間管理表.zip'
     try:
         with zipfile.ZipFile(file_path_zip) as zip_f:
             for info in zip_f.infolist():
@@ -86,7 +86,7 @@ def zangyou_table(zt_sh, g_sh, r, driver, buai, syukin, d1_dict, folder_year):
     for col in range(1, tsh.max_column+1):
         if tsh.cell(1, col).value == "総労働時間":
             sou = col
-        if tsh.cell(1, col).value == "休日労働時間":
+        if tsh.cell(1, col).value == "法定休日労働時間":
             kyu = col
         if tsh.cell(1, col).value == "法定外労働時間":
             zan = col

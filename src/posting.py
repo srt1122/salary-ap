@@ -81,7 +81,7 @@ for driver in ti_dict:
             else:
                 kyuzitu = convert_zikan(ti_dict[driver][2])
                 #
-                # 
+                #
                 # zan_zikan = zan_zikan - kyuzitu
             if zan_zikan <= 60:
                 sh.cell(row, 34).value = ti_dict[driver][1]
