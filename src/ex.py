@@ -11,8 +11,8 @@ def convert_excel(csv_year, folder_year):
 
     zisseki_path = f'C:/CSVファイル/配車実績ＣＳＶ({csv_year})-({csv_year}).CSV'
     #zisseki_path = f'zisseki_csv/配車実績ＣＳＶ({csv_year})-({csv_year}).CSV'
-    file_path_zip = "C:/Users/Mieyuso001/Downloads/労働時間管理表.zip"
-    #file_path_zip = "C:/Users/Mieyuso005/Downloads/労働時間管理表.zip"
+    #file_path_zip = "C:/Users/Mieyuso001/Downloads/労働時間管理表.zip"
+    file_path_zip = "C:/Users/Mieyuso005/Downloads/労働時間管理表.zip"
     #file_path_zip = f'kinmuzikan/{folder_year}/労働時間管理表.zip'
     try:
         with zipfile.ZipFile(file_path_zip) as zip_f:
@@ -98,7 +98,6 @@ def zangyou_table(zt_sh, g_sh, r, driver, buai, syukin, d1_dict, folder_year):
     for row in range(2, tsh.max_row+1):
         if tsh.cell(row, 5).value == driver:
             k_sum = 0
-            buai = buai
             souroudou = convert_zikan(tsh, row, sou)
             kyuuzitu = convert_zikan(tsh, row, kyu)
             zangyou = convert_zikan(tsh, row, zan)
@@ -119,6 +118,7 @@ def zangyou_table(zt_sh, g_sh, r, driver, buai, syukin, d1_dict, folder_year):
             if shinya != 0:
                 k_shinya = kisozikyu * Decimal("0.25")
             zt_sh.cell(1, 1).value = driver
+            #残業時間書き込み
             if cyouzan > 0:
                 zt_sh.cell(2, 2).value = '60:00'
                 zt_sh.cell(2, 4).value = math.ceil(k_zangyou * 60)
@@ -138,7 +138,7 @@ def zangyou_table(zt_sh, g_sh, r, driver, buai, syukin, d1_dict, folder_year):
                 k_sum += zt_sh.cell(2, 3).value
                 zt_sh.cell(3, 3).value = 0
             if kyuuzitu != 0:
-                zt_sh.cell(4, 2).value = tsh.cell(row, 14).value
+                zt_sh.cell(4, 2).value = tsh.cell(row, 12).value
                 zt_sh.cell(4, 4).value = math.ceil(k_kyuuzitu * kyuuzitu)
                 zt_sh.cell(4, 5).value = math.ceil(kisoteate * Decimal("1.35") * kyuuzitu)
                 zt_sh.cell(4, 3).value = zt_sh.cell(4, 4).value + zt_sh.cell(4, 5).value
@@ -146,7 +146,7 @@ def zangyou_table(zt_sh, g_sh, r, driver, buai, syukin, d1_dict, folder_year):
             else:
                 zt_sh.cell(4, 3).value = 0
             if shinya != 0:
-                zt_sh.cell(5, 2).value = tsh.cell(row, 15).value
+                zt_sh.cell(5, 2).value = tsh.cell(row, 13).value
                 zt_sh.cell(5, 4).value = math.ceil(k_shinya * shinya)
                 zt_sh.cell(5, 5).value = math.ceil(kisoteate * Decimal("1.25") * shinya)
                 zt_sh.cell(5, 3).value = zt_sh.cell(5, 4).value + zt_sh.cell(5, 5).value
