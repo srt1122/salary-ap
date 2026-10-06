@@ -17,7 +17,7 @@ csv_year, folder_year = cl.input_years()
 
 df = pd.read_csv(f'salary-data/{folder_year}/data/労働時間管理表(合計)_00000001.csv',
                                             encoding='cp932')
-ti_df = df[["乗務員名", "総労働時間", '法定外労働時間', '休日労働時間', '深夜労働時間']].set_index("乗務員名")
+ti_df = df[["乗務員名", "総労働時間", '法定外労働時間', '法定休日労働時間', '深夜労働時間']].set_index("乗務員名")
 ti_df = ti_df.T
 ti_dict = ti_df.to_dict(orient='list')
 
@@ -63,7 +63,7 @@ for driver in ti_dict:
     sa_df = sa_df.T
     sa_dict = sa_df.to_dict(orient='list')
 
-    for row in range(15, sh.max_row+1):
+    for row in range(6, sh.max_row+1):
         if sh.cell(row, 3).value == driver:
             try:
                 sh.cell(row, 32).value = sa_dict["有休支給額"][1]
